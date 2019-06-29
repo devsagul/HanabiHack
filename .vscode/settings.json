@@ -30,7 +30,11 @@
         "cmath": "cpp",
         "new": "cpp",
         "optional": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "cstdarg": "cpp",
+        "cstring": "cpp",
+        "iostream": "cpp",
+        "cinttypes": "cpp"
     },
     "42header.username": "ShnurD6"
 }

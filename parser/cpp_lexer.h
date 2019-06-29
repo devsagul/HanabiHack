@@ -6,7 +6,7 @@
 /*   By: ShnurD6 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 16:06:23 by bbaelor-          #+#    #+#             */
-/*   Updated: 2019/06/29 17:10:36 by ShnurD6          ###   ########.fr       */
+/*   Updated: 2019/06/29 18:39:26 by ShnurD6          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 class CodeParser
 {
+    std::map<std::string, int> GetTockens(const std::string aText, char aDelim);
+    void PasteValidTocken(char *aTocken,
+                            std::map<std::string, int> aPatterns, int *aResult);
+
 public:
-    std::vector<std::string> ParsePatterns(char *aCode, char *aPatterns);
-    int SheetMetric(char *aCode, char *aPatterns);
+    int *ParsePatterns(char *aCode, const char *aPatterns);
+    int SheetMetric(char *aCode, const char *aPatterns);
 };
