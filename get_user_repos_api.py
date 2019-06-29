@@ -1,6 +1,6 @@
 from github import Github
 
-g = Github('cf56ac35c4a86f16f65a886a9ff199d27874b166')
+g = Github()
 
 def get_repos(name):
     for repo in g.get_user(name).get_repos():
