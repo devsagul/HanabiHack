@@ -1,4 +1,4 @@
-%module example
+%module hack_parser
  %{
     #include "cpp_lexer.h"
  %}

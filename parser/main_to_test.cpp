@@ -6,7 +6,7 @@
 /*   By: ShnurD6 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 16:07:50 by ShnurD6           #+#    #+#             */
-/*   Updated: 2019/06/29 18:39:59 by ShnurD6          ###   ########.fr       */
+/*   Updated: 2019/06/29 18:46:45 by ShnurD6          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int main(int argc, char **argv)
 
     Code = readFile(argv[1]);
     CodeParser Parser;
-    auto res = Parser.SheetMetric(const_cast<char *>(Code.c_str()), "std\n");
+    auto res = Parser.SheetMetric(const_cast<char *>(Code.c_str()), "ShnurD6\n");
     std::cout << "RES: ------------------------------" << std::endl;
     std::cout << res << std::endl;
-    return 0;
+    return (0);
 }
