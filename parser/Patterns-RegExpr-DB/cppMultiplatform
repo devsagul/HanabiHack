@@ -1,0 +1,2 @@
+#if[n]?def (__linux__|_WIN32).*\n(.*\n)+?#elif.*?(__linux__|_WIN32).*?$
+
