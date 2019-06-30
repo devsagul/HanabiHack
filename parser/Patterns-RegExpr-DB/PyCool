@@ -1,0 +1,5 @@
+[\(\[]\s?\S\s*for\s*\S*\s*in\s*\S*\s*[\)\]]
+import reduce
+yield
+map(
+

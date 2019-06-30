@@ -1,0 +1,2 @@
+for \S* in range \(len\(\w*\)\):
+
