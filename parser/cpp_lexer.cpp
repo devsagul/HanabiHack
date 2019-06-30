@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpp_lexer.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ShnurD6 <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bbaelor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 13:32:08 by bbaelor-          #+#    #+#             */
-/*   Updated: 2019/06/29 21:53:51 by ShnurD6          ###   ########.fr       */
+/*   Updated: 2019/06/30 09:44:08 by bbaelor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,28 @@ int CodeParser::SheetMetric(char *aCode, const char *aPatterns)
     for (int i = 0; i < PatternsLen; i++)
         Result += ResParse[i];
     return (Result);
+}
+
+double CodeParser::GetMa(std::vector<int>::iterator aIter)
+{
+    double MA30, MA120, MA360, MASUM = 0;
+    for (int i = 0; i < 360; i++)
+    {
+        MASUM += *aIter;
+        aIter++;
+        if (i == 30)
+            MA30 = MASUM / 30;
+        if (i == 120)
+            MA120 = MASUM / 120;
+    }
+    MA360 = MASUM / 360;
+    return (tanh((MA30 - MA120) / MA360));
+}
+
+std::vector<double> CodeParser::GetMoovingAverage(std::vector<int> aTimeSeries)
+{
+    std::vector<double> ResultList;
+    for (int i = 0; i < aTimeSeries.size() - 360; i++)
+        ResultList.push_back(GetMa(aTimeSeries.begin()));
+    return (ResultList);
 }
