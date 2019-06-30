@@ -6,7 +6,7 @@
 /*   By: bbaelor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 13:32:08 by bbaelor-          #+#    #+#             */
-/*   Updated: 2019/06/30 09:44:08 by bbaelor-         ###   ########.fr       */
+/*   Updated: 2019/06/30 10:33:04 by bbaelor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,11 @@ double CodeParser::GetMa(std::vector<int>::iterator aIter)
     return (tanh((MA30 - MA120) / MA360));
 }
 
-std::vector<double> CodeParser::GetMoovingAverage(std::vector<int> aTimeSeries)
+PyObject* CodeParser::GetMoovingAverage(PyObject* aTimeSeries)
 {
-    std::vector<double> ResultList;
-    for (int i = 0; i < aTimeSeries.size() - 360; i++)
-        ResultList.push_back(GetMa(aTimeSeries.begin()));
-    return (ResultList);
+    std::vector<int> TimeSeries = listTupleToVector_Int(aTimeSeries);
+    std::vector<float> ResultList;
+    for (int i = 0; i < TimeSeries.size() - 360; i++)
+        ResultList.push_back(GetMa(TimeSeries.begin()));
+    return (vectorToList_Float(ResultList));
 }

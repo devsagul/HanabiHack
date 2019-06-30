@@ -3006,10 +3006,8 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_CodeParser swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_int swig_types[2]
-#define SWIGTYPE_p_std__vectorT_double_t swig_types[3]
-#define SWIGTYPE_p_std__vectorT_int_t swig_types[4]
-static swig_type_info *swig_types[6];
-static swig_module_info swig_module = {swig_types, 5, 0, 0, 0, 0};
+static swig_type_info *swig_types[4];
+static swig_module_info swig_module = {swig_types, 3, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3442,14 +3440,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CodeParser_GetMoovingAverage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CodeParser *arg1 = (CodeParser *) 0 ;
-  std::vector< int > arg2 ;
+  PyObject *arg2 = (PyObject *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  std::vector< double > result;
+  PyObject *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:CodeParser_GetMoovingAverage",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_CodeParser, 0 |  0 );
@@ -3457,21 +3453,9 @@ SWIGINTERN PyObject *_wrap_CodeParser_GetMoovingAverage(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CodeParser_GetMoovingAverage" "', argument " "1"" of type '" "CodeParser *""'"); 
   }
   arg1 = reinterpret_cast< CodeParser * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_int_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CodeParser_GetMoovingAverage" "', argument " "2"" of type '" "std::vector< int >""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CodeParser_GetMoovingAverage" "', argument " "2"" of type '" "std::vector< int >""'");
-    } else {
-      std::vector< int > * temp = reinterpret_cast< std::vector< int > * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
-  result = (arg1)->GetMoovingAverage(arg2);
-  resultobj = SWIG_NewPointerObj((new std::vector< double >(static_cast< const std::vector< double >& >(result))), SWIGTYPE_p_std__vectorT_double_t, SWIG_POINTER_OWN |  0 );
+  arg2 = obj1;
+  result = (PyObject *)(arg1)->GetMoovingAverage(arg2);
+  resultobj = result;
   return resultobj;
 fail:
   return NULL;
@@ -3538,29 +3522,21 @@ static PyMethodDef SwigMethods[] = {
 static swig_type_info _swigt__p_CodeParser = {"_p_CodeParser", "CodeParser *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_double_t = {"_p_std__vectorT_double_t", "std::vector< double > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_int_t = {"_p_std__vectorT_int_t", "std::vector< int > *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_CodeParser,
   &_swigt__p_char,
   &_swigt__p_int,
-  &_swigt__p_std__vectorT_double_t,
-  &_swigt__p_std__vectorT_int_t,
 };
 
 static swig_cast_info _swigc__p_CodeParser[] = {  {&_swigt__p_CodeParser, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_double_t[] = {  {&_swigt__p_std__vectorT_double_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_int_t[] = {  {&_swigt__p_std__vectorT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_CodeParser,
   _swigc__p_char,
   _swigc__p_int,
-  _swigc__p_std__vectorT_double_t,
-  _swigc__p_std__vectorT_int_t,
 };
 
 

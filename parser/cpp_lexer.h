@@ -6,7 +6,7 @@
 /*   By: bbaelor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 16:06:23 by bbaelor-          #+#    #+#             */
-/*   Updated: 2019/06/30 09:48:13 by bbaelor-         ###   ########.fr       */
+/*   Updated: 2019/06/30 10:30:37 by bbaelor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <map>
 #include <math.h>
+#include "PythonUtils.h"
 
 class CodeParser
 {
@@ -30,5 +31,5 @@ public:
     int SheetMetric(char *aCode, const char *aPatterns);
     int *ParseRegexps(char *aCode, const char *aRegexps);
     int ParseOneRegexp(char *aCode, const char *aOneRegexp);
-    std::vector<double> GetMoovingAverage(std::vector<int> aTimeSeries);
+    PyObject* GetMoovingAverage(PyObject*aTimeSeries);
 };
