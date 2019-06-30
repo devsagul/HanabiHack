@@ -42,6 +42,14 @@ PyObject* MasToList_int(const int *data, size_t size)
 	return listObj;
 }
 
+int *ListToMas_int(PyObject *aList)
+{
+    auto Result = new int[PyList_Size(aList)];
+    for(Py_ssize_t i = 0; i < PyList_Size(aList); i++)
+        Result[i] = PyLong_AS_LONG(PyList_GetItem(aList, i));
+    return (Result);
+}
+
 // ======
 // TUPLES
 // ======

@@ -11,5 +11,7 @@ PyObject* vectorVectorToTuple_Float(const std::vector< std::vector< float > > &d
 std::vector<float> listTupleToVector_Float(PyObject* incoming);
 std::vector<int> listTupleToVector_Int(PyObject* incoming);
 PyObject* MasToList_int(const int *data, size_t size);
+int *ListToMas_int(PyObject *aList);
+
 
 #endif // !PYTHON_UTILS_H

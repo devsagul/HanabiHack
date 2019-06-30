@@ -3005,9 +3005,8 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 #define SWIGTYPE_p_CodeParser swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_int swig_types[2]
-static swig_type_info *swig_types[4];
-static swig_module_info swig_module = {swig_types, 3, 0, 0, 0, 0};
+static swig_type_info *swig_types[3];
+static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3243,13 +3242,6 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
-{
-  return PyInt_FromLong((long) value);
-}
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -3269,7 +3261,7 @@ SWIGINTERN PyObject *_wrap_CodeParser_ParsePatterns(PyObject *SWIGUNUSEDPARM(sel
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  int *result = 0 ;
+  PyObject *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:CodeParser_ParsePatterns",&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_CodeParser, 0 |  0 );
@@ -3287,8 +3279,8 @@ SWIGINTERN PyObject *_wrap_CodeParser_ParsePatterns(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CodeParser_ParsePatterns" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (int *)(arg1)->ParsePatterns(arg2,(char const *)arg3);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  result = (PyObject *)(arg1)->ParsePatterns(arg2,(char const *)arg3);
+  resultobj = result;
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
@@ -3315,7 +3307,7 @@ SWIGINTERN PyObject *_wrap_CodeParser_SheetMetric(PyObject *SWIGUNUSEDPARM(self)
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  int result;
+  PyObject *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:CodeParser_SheetMetric",&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_CodeParser, 0 |  0 );
@@ -3333,8 +3325,8 @@ SWIGINTERN PyObject *_wrap_CodeParser_SheetMetric(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CodeParser_SheetMetric" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (int)(arg1)->SheetMetric(arg2,(char const *)arg3);
-  resultobj = SWIG_From_int(static_cast< int >(result));
+  result = (PyObject *)(arg1)->SheetMetric(arg2,(char const *)arg3);
+  resultobj = result;
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
@@ -3361,7 +3353,7 @@ SWIGINTERN PyObject *_wrap_CodeParser_ParseRegexps(PyObject *SWIGUNUSEDPARM(self
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  int *result = 0 ;
+  PyObject *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:CodeParser_ParseRegexps",&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_CodeParser, 0 |  0 );
@@ -3379,8 +3371,8 @@ SWIGINTERN PyObject *_wrap_CodeParser_ParseRegexps(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CodeParser_ParseRegexps" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (int *)(arg1)->ParseRegexps(arg2,(char const *)arg3);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  result = (PyObject *)(arg1)->ParseRegexps(arg2,(char const *)arg3);
+  resultobj = result;
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
@@ -3407,7 +3399,7 @@ SWIGINTERN PyObject *_wrap_CodeParser_ParseOneRegexp(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  int result;
+  PyObject *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:CodeParser_ParseOneRegexp",&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_CodeParser, 0 |  0 );
@@ -3425,8 +3417,8 @@ SWIGINTERN PyObject *_wrap_CodeParser_ParseOneRegexp(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CodeParser_ParseOneRegexp" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (int)(arg1)->ParseOneRegexp(arg2,(char const *)arg3);
-  resultobj = SWIG_From_int(static_cast< int >(result));
+  result = (PyObject *)(arg1)->ParseOneRegexp(arg2,(char const *)arg3);
+  resultobj = result;
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
@@ -3521,22 +3513,18 @@ static PyMethodDef SwigMethods[] = {
 
 static swig_type_info _swigt__p_CodeParser = {"_p_CodeParser", "CodeParser *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_CodeParser,
   &_swigt__p_char,
-  &_swigt__p_int,
 };
 
 static swig_cast_info _swigc__p_CodeParser[] = {  {&_swigt__p_CodeParser, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_CodeParser,
   _swigc__p_char,
-  _swigc__p_int,
 };
 
 
