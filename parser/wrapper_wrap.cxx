@@ -3437,6 +3437,31 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_CodeParser_GetMoovingAverage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  CodeParser *arg1 = (CodeParser *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:CodeParser_GetMoovingAverage",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_CodeParser, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CodeParser_GetMoovingAverage" "', argument " "1"" of type '" "CodeParser *""'"); 
+  }
+  arg1 = reinterpret_cast< CodeParser * >(argp1);
+  arg2 = obj1;
+  result = (PyObject *)(arg1)->GetMoovingAverage(arg2);
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_CodeParser(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CodeParser *result = 0 ;
@@ -3484,6 +3509,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CodeParser_SheetMetric", _wrap_CodeParser_SheetMetric, METH_VARARGS, NULL},
 	 { (char *)"CodeParser_ParseRegexps", _wrap_CodeParser_ParseRegexps, METH_VARARGS, NULL},
 	 { (char *)"CodeParser_ParseOneRegexp", _wrap_CodeParser_ParseOneRegexp, METH_VARARGS, NULL},
+	 { (char *)"CodeParser_GetMoovingAverage", _wrap_CodeParser_GetMoovingAverage, METH_VARARGS, NULL},
 	 { (char *)"new_CodeParser", _wrap_new_CodeParser, METH_VARARGS, NULL},
 	 { (char *)"delete_CodeParser", _wrap_delete_CodeParser, METH_VARARGS, NULL},
 	 { (char *)"CodeParser_swigregister", CodeParser_swigregister, METH_VARARGS, NULL},
