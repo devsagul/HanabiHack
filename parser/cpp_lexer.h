@@ -6,7 +6,7 @@
 /*   By: bbaelor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 16:06:23 by bbaelor-          #+#    #+#             */
-/*   Updated: 2019/06/30 11:50:47 by bbaelor-         ###   ########.fr       */
+/*   Updated: 2019/06/30 10:30:37 by bbaelor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ class CodeParser
     double GetMa(std::vector<int>::iterator aIter);
 
 public:
-    PyObject *ParsePatterns(char *aCode, const char *aPatterns);
-    PyObject *SheetMetric(char *aCode, const char *aPatterns);
-    PyObject *ParseRegexps(char *aCode, const char *aRegexps);
+    int *ParsePatterns(char *aCode, const char *aPatterns);
+    int SheetMetric(char *aCode, const char *aPatterns);
+    int *ParseRegexps(char *aCode, const char *aRegexps);
     int ParseOneRegexp(char *aCode, const char *aOneRegexp);
     PyObject* GetMoovingAverage(PyObject*aTimeSeries);
 };

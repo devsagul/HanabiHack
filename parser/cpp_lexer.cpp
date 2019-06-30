@@ -6,7 +6,7 @@
 /*   By: bbaelor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 13:32:08 by bbaelor-          #+#    #+#             */
-/*   Updated: 2019/06/30 12:02:45 by bbaelor-         ###   ########.fr       */
+/*   Updated: 2019/06/30 10:33:04 by bbaelor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void CodeParser::PasteValidTocken(char *aTocken, std::map<std::string, int> aPat
         aResult[aPatterns.at(aTocken)]++;
 }
 
-PyObject *CodeParser::ParsePatterns(char *aCode, const char *aPatterns)
+int *CodeParser::ParsePatterns(char *aCode, const char *aPatterns)
 {
     std::map<std::string, int> PatternsMap = GetTockens(aPatterns, '\n');
     int *Result = new int[PatternsMap.size()];
@@ -53,7 +53,7 @@ PyObject *CodeParser::ParsePatterns(char *aCode, const char *aPatterns)
         PasteValidTocken(buff, PatternsMap, Result);
         buff = std::strtok(NULL, delimetrs);
     }
-    return (MasToList_int(Result, PatternsMap.size()));
+    return (Result);
 }
 
 int CodeParser::ParseOneRegexp(char *aCode, const char *aOneRegexp)
@@ -65,25 +65,25 @@ int CodeParser::ParseOneRegexp(char *aCode, const char *aOneRegexp)
     return (std::distance(begin, end));
 }
 
-PyObject *CodeParser::ParseRegexps(char *aCode, const char *aRegexps)
+int *CodeParser::ParseRegexps(char *aCode, const char *aRegexps)
 {
     auto Regexps = GetTockens(aRegexps, '\n');
     auto Result = new int[Regexps.size()];
     for (auto &Regexp: Regexps)
         Result[Regexp.second] = ParseOneRegexp(aCode, Regexp.first.c_str());
-    return (MasToList_int(Result, Regexps.size()));
+    return (Result);
 }
 
-PyObject *CodeParser::SheetMetric(char *aCode, const char *aPatterns)
+int CodeParser::SheetMetric(char *aCode, const char *aPatterns)
 {
     int PatternsLen = 0, Result = 0;
-    int *ResParse = ListToMas_int(ParsePatterns(aCode, aPatterns));
+    int *ResParse = ParsePatterns(aCode, aPatterns);
     for (int i = 0; aPatterns[i] != '\0'; i++)
         if (aPatterns[i] == '\n')
             PatternsLen++;
     for (int i = 0; i < PatternsLen; i++)
         Result += ResParse[i];
-    return (PyLong_FromLong(Result));
+    return (Result);
 }
 
 double CodeParser::GetMa(std::vector<int>::iterator aIter)
