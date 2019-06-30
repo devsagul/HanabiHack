@@ -114,6 +114,9 @@ class CodeParser(_object):
     def ParseOneRegexp(self, aCode, aOneRegexp):
         return _hack_parser.CodeParser_ParseOneRegexp(self, aCode, aOneRegexp)
 
+    def GetMoovingAverage(self, aTimeSeries):
+        return _hack_parser.CodeParser_GetMoovingAverage(self, aTimeSeries)
+
     def __init__(self):
         this = _hack_parser.new_CodeParser()
         try:
