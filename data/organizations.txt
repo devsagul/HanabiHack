@@ -1,0 +1,10 @@
+google
+facebook
+apache
+Microsoft
+mozilla
+codrops
+twitter
+square
+googlesamples
+Netflix
