@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpp_lexer.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ShnurD6 <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bbaelor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 13:32:08 by bbaelor-          #+#    #+#             */
-/*   Updated: 2019/06/29 21:53:51 by ShnurD6          ###   ########.fr       */
+/*   Updated: 2019/06/30 12:51:14 by bbaelor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void CodeParser::PasteValidTocken(char *aTocken, std::map<std::string, int> aPat
         aResult[aPatterns.at(aTocken)]++;
 }
 
-int *CodeParser::ParsePatterns(char *aCode, const char *aPatterns)
+PyObject *CodeParser::ParsePatterns(char *aCode, const char *aPatterns)
 {
     std::map<std::string, int> PatternsMap = GetTockens(aPatterns, '\n');
     int *Result = new int[PatternsMap.size()];
@@ -53,35 +53,61 @@ int *CodeParser::ParsePatterns(char *aCode, const char *aPatterns)
         PasteValidTocken(buff, PatternsMap, Result);
         buff = std::strtok(NULL, delimetrs);
     }
-    return (Result);
+    return (MasToList_int(Result, PatternsMap.size()));
 }
 
-int CodeParser::ParseOneRegexp(char *aCode, const char *aOneRegexp)
+PyObject *CodeParser::ParseOneRegexp(char *aCode, const char *aOneRegexp)
 {
     auto CodeString = std::string(aCode);
     std::regex RegExFromStr(aOneRegexp);
     auto begin = std::sregex_iterator(CodeString.begin(), CodeString.end(), RegExFromStr);
     auto end = std::sregex_iterator();
-    return (std::distance(begin, end));
+    return (PyLong_FromLong(std::distance(begin, end)));
 }
 
-int *CodeParser::ParseRegexps(char *aCode, const char *aRegexps)
+PyObject *CodeParser::ParseRegexps(char *aCode, const char *aRegexps)
 {
     auto Regexps = GetTockens(aRegexps, '\n');
     auto Result = new int[Regexps.size()];
     for (auto &Regexp: Regexps)
-        Result[Regexp.second] = ParseOneRegexp(aCode, Regexp.first.c_str());
-    return (Result);
+        Result[Regexp.second] = PyLong_AS_LONG(ParseOneRegexp(aCode, Regexp.first.c_str()));
+    return (MasToList_int(Result, Regexps.size()));
 }
 
-int CodeParser::SheetMetric(char *aCode, const char *aPatterns)
+PyObject* CodeParser::SheetMetric(char *aCode, const char *aPatterns)
 {
     int PatternsLen = 0, Result = 0;
-    int *ResParse = ParsePatterns(aCode, aPatterns);
+    int *ResParse = ListToMas_int(ParsePatterns(aCode, aPatterns));
+
     for (int i = 0; aPatterns[i] != '\0'; i++)
         if (aPatterns[i] == '\n')
             PatternsLen++;
     for (int i = 0; i < PatternsLen; i++)
         Result += ResParse[i];
-    return (Result);
+    return (PyLong_FromLong(Result));
+}
+
+double CodeParser::GetMa(std::vector<int>::iterator aIter)
+{
+    double MA30, MA120, MA360, MASUM = 0;
+    for (int i = 0; i < 360; i++)
+    {
+        MASUM += *aIter;
+        aIter++;
+        if (i == 30)
+            MA30 = MASUM / 30;
+        if (i == 120)
+            MA120 = MASUM / 120;
+    }
+    MA360 = MASUM / 360;
+    return (tanh((MA30 - MA120) / MA360));
+}
+
+PyObject* CodeParser::GetMoovingAverage(PyObject* aTimeSeries)
+{
+    std::vector<int> TimeSeries = listTupleToVector_Int(aTimeSeries);
+    std::vector<float> ResultList;
+    for (int i = 0; i < TimeSeries.size() - 360; i++)
+        ResultList.push_back(GetMa(TimeSeries.begin()));
+    return (vectorToList_Float(ResultList));
 }
