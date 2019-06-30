@@ -24,6 +24,24 @@ PyObject* vectorToList_Float(const vector<float> &data)
 	return listObj;
 }
 
+PyObject* MasToList_int(const int *data, size_t size)
+{
+    PyObject* listObj = PyList_New(size);
+	if (!listObj)
+        throw logic_error("Unable to allocate memory for Python list");
+	for (size_t i = 0; i < size; i++)
+    {
+		PyObject *num = PyLong_FromLong(data[i]);
+		if (!num)
+        {
+			Py_DECREF(listObj);
+			throw logic_error("Unable to allocate memory for Python list");
+		}
+		PyList_SET_ITEM(listObj, i, num);
+	}
+	return listObj;
+}
+
 // ======
 // TUPLES
 // ======
