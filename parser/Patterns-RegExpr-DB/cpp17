@@ -1,0 +1,16 @@
+#include \<optional\>
+#include \<filesystem\>
+#include \<any\>
+#include \<variant\>
+std::make_from_tuple
+std::launder
+std::optional
+std::as_const
+std::make_from_tuple
+std::for_each_n
+std::clamp
+basic_string_view
+\[\[nodiscard
+\[\[fallthrough
+\[\[maybe_unused
+
